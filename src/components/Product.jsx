@@ -1,5 +1,6 @@
 // src/components/Product.jsx
 import PropTypes from 'prop-types';
+import { IoMdBasket } from 'react-icons/io';
 
 const nameStyle = {
     margin: 10,
@@ -15,7 +16,10 @@ export const Product = ({
     price,
 }) => (
     <div>
-        <h2 style={nameStyle}>{name}</h2>
+        <h2 style={nameStyle}>
+            <IoMdBasket className="my-icon" />
+            {name}
+        </h2>
         <img src={imgUrl} alt={name} width="480" />
         <p>Price: {price} credits</p>
     </div>

@@ -1,7 +1,7 @@
 // src/App.jsx
 
-import { Product } from '../components/Product';
-import { Alert } from '../components/Allert';
+import { Product } from './Product';
+import { Alert } from './Alert';
 
 export default function App() {
     return (
@@ -23,13 +23,13 @@ export default function App() {
                     <Alert variant="info">
                         Would you like to browse our recommended products?
                     </Alert>
-                    <Alert variant="error">
+                    <Alert variant="error" outlined>
                         There was an error during your last transaction
                     </Alert>
-                    <Alert variant="success">
+                    <Alert variant="success" elevated>
                         Payment received, thank you for your purchase
                     </Alert>
-                    <Alert variant="warning">
+                    <Alert variant="warning" elevated outlined>
                         Please update your profile contact information
                     </Alert>
                 </>
