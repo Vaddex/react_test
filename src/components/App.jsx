@@ -3,13 +3,18 @@
 import { Product } from './Product';
 import { Alert } from './Alert';
 import TestButton from './TestButton/TestButton';
+import TestReader from './TestReader/TestReader';
+import articles from '../reader.json';
 
 export default function App() {
     return (
         <div>
             <h1>Best selling</h1>
             <>
-                <TestButton></TestButton>
+                <TestButton />
+            </>
+            <>
+                <TestReader articles={articles} />
             </>
             <Product
                 name="Tacos With Lime"
