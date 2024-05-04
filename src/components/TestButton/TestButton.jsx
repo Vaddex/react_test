@@ -1,11 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function TestButton() {
-    const [clicks, setClicks] = useState(0);
+    const [clicks, setClicks] = useState(() => {
+        // Зчитуємо значення за ключем
+        const savedClicks = window.localStorage.getItem('saved-clicks');
+
+        // Якщо там щось є, повертаємо це
+        // значення як початкове значення стану
+        if (savedClicks !== null) {
+            return JSON.parse(savedClicks);
+        }
+        return 0;
+    });
     const [isOpen, setIsOpen] = useState(false);
     const [values, setValues] = useState({
         x: 0,
         y: 0,
+    });
+
+    useEffect(() => {
+        document.title = `You clicked ${clicks} times`;
+        console.log('Clicks updated: ', clicks);
+    }, [clicks]);
+
+    useEffect(() => {
+        window.localStorage.setItem('saved-clicks', clicks);
+        // window.localStorage.setItem('key', JSON.stringify({}));
     });
 
     const updateX = () => {
@@ -34,6 +54,7 @@ export default function TestButton() {
         <>
             <hr />
             <button onClick={handleClick}>Current: {clicks}</button>
+            <button onClick={() => setClicks(0)}>Reset</button>
             <hr />
 
             <button onClick={updateX}>Update X</button>
