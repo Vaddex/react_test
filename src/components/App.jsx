@@ -5,6 +5,7 @@ import { Alert } from './Alert';
 import TestButton from './TestButton/TestButton';
 import TestReader from './TestReader/TestReader';
 import articles from '../reader.json';
+import Timer from './Timer/Timer';
 
 export default function App() {
     return (
@@ -12,6 +13,9 @@ export default function App() {
             <h1>Best selling</h1>
             <>
                 <TestButton />
+            </>
+            <>
+                <Timer />
             </>
             <>
                 <TestReader articles={articles} />

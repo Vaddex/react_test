@@ -1,7 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const getInatialIndex = () => {
+    const saveIndex = localStorage.getItem('reader-index');
+    if (saveIndex !== null) {
+        return JSON.parse(saveIndex);
+    }
+    return 0;
+};
 
 export default function TestReader({ articles }) {
-    const [articleIdx, setArticleIdx] = useState(0);
+    const [articleIdx, setArticleIdx] = useState(getInatialIndex);
 
     const handlePrev = () => {
         setArticleIdx(articleIdx - 1);
@@ -10,6 +18,10 @@ export default function TestReader({ articles }) {
     const handleNext = () => {
         setArticleIdx(articleIdx + 1);
     };
+
+    useEffect(() => {
+        localStorage.setItem('reader-index', articleIdx);
+    }, [articleIdx]);
 
     const currentArticle = articles[articleIdx];
     const isFirst = articleIdx === 0;
