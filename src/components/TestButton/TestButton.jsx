@@ -12,6 +12,8 @@ export default function TestButton() {
         }
         return 0;
     });
+
+    // modal
     const [isOpen, setIsOpen] = useState(false);
     const [values, setValues] = useState({
         x: 0,
@@ -46,6 +48,7 @@ export default function TestButton() {
         setClicks(clicks + 1);
     };
 
+    // modal
     const handleToggle = () => {
         setIsOpen(!isOpen);
     };
