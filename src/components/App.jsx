@@ -1,21 +1,74 @@
-// src/App.jsx
-
 import { Product } from './Product';
 import { Alert } from './Alert';
+import { useState } from 'react';
 import TestButton from './TestButton/TestButton';
 import TestReader from './TestReader/TestReader';
 import articles from '../reader.json';
-// import Timer from './Timer/Timer';
+import SearchBar from './SearchBar/SearchBar';
+import LangSwitcher from './LangSwitcher/LangSwitcher';
 import LoginForm from './LoginForm/LoginForm';
+// import Timer from './Timer/Timer';
 
 export default function App() {
+    const [lang, setLang] = useState('ua');
+    const [coffeeSize, setCoffeeSize] = useState('md');
+    const handleSize = evt => {
+        setCoffeeSize(evt.target.value);
+    };
+
     return (
         <div>
             <h1>Best selling</h1>
             <>
                 <LoginForm />
+                <hr />
             </>
             <>
+                <p>Selected language: {lang}</p>
+                <LangSwitcher value={lang} onSelect={setLang} />
+                <br />
+                <hr />
+            </>
+            <>
+                <br />
+                <SearchBar />
+            </>
+            <>
+                <h2>Select coffee size</h2>
+                <label>
+                    <input
+                        type="radio"
+                        name="coffeeSize"
+                        value="sm"
+                        checked={coffeeSize === 'sm'}
+                        onChange={handleSize}
+                    />
+                    Small
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="coffeeSize"
+                        value="md"
+                        checked={coffeeSize === 'md'}
+                        onChange={handleSize}
+                    />
+                    Meduim
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="coffeeSize"
+                        value="lg"
+                        checked={coffeeSize === 'lg'}
+                        onChange={handleSize}
+                    />
+                    Large
+                </label>
+                <br />
+            </>
+            <>
+                <br />
                 <TestButton />
             </>
             <>{/* <Timer /> */}</>

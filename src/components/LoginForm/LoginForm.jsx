@@ -1,4 +1,9 @@
+import { useId } from 'react';
+
 const LoginForm = () => {
+    const loginId = useId();
+    const passId = useId();
+
     const handleSubmit = evt => {
         evt.preventDefault();
 
@@ -16,8 +21,11 @@ const LoginForm = () => {
     };
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" name="login" />
-            <input type="password" name="password" />
+            <label htmlFor={loginId}>Login</label>
+            <input type="text" name="login" id={loginId} />
+
+            <label htmlFor={passId}>Password</label>
+            <input type="password" name="password" id={passId} />
             <button type="submit">Login</button>
         </form>
     );
