@@ -10,10 +10,19 @@ import LoginForm from './LoginForm/LoginForm';
 // import Timer from './Timer/Timer';
 
 export default function App() {
+    // LangSwitcher
     const [lang, setLang] = useState('ua');
+
+    // coffeeSize
     const [coffeeSize, setCoffeeSize] = useState('md');
     const handleSize = evt => {
         setCoffeeSize(evt.target.value);
+    };
+
+    //hasAccepted
+    const [hasAccepted, setHasAccepted] = useState(false);
+    const handleChange = evt => {
+        setHasAccepted(evt.target.checked);
     };
 
     return (
@@ -66,6 +75,23 @@ export default function App() {
                     Large
                 </label>
                 <br />
+                <hr />
+            </>
+            <>
+                <div>
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="terms"
+                            checked={hasAccepted}
+                            onChange={handleChange}
+                        />
+                        I accept terms and conditions
+                    </label>
+                    <button type="button" disabled={!hasAccepted}>
+                        Proceed
+                    </button>
+                </div>
             </>
             <>
                 <br />
