@@ -7,6 +7,7 @@ import articles from '../reader.json';
 import SearchBar from './SearchBar/SearchBar';
 import LangSwitcher from './LangSwitcher/LangSwitcher';
 import LoginForm from './LoginForm/LoginForm';
+import FeedbackForm from './FeedbackForm/FeedbackForm';
 // import Timer from './Timer/Timer';
 
 export default function App() {
@@ -41,6 +42,8 @@ export default function App() {
             <>
                 <br />
                 <SearchBar />
+                <br />
+                <hr />
             </>
             <>
                 <h2>Select coffee size</h2>
@@ -75,6 +78,10 @@ export default function App() {
                     Large
                 </label>
                 <br />
+                <hr />
+            </>
+            <>
+                <FeedbackForm />
                 <hr />
             </>
             <>
