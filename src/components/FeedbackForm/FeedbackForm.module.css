@@ -6,12 +6,20 @@
 
 .field {
     color: gray;
-    margin: 5px 50px;
+    margin: 5px 20px;
     border-radius: 10px;
+    gap: 30px;
 }
 
 .btn {
     border-radius: 20px;
+    background-color: teal;
+    color: pink;
+}
+.errorArea {
+    border: 1px solid tomato;
+    padding: 5px;
+    border-radius: 10px;
     background-color: tomato;
-    color: green;
+    color: black;
 }
