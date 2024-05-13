@@ -2,6 +2,8 @@
     padding: 20px;
     border: 2px solid purple;
     border-radius: 20px;
+    max-width: 900px;
+    font: inherit;
 }
 
 .field {
@@ -9,6 +11,8 @@
     margin: 5px 20px;
     border-radius: 10px;
     gap: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .btn {
@@ -17,9 +21,10 @@
     color: pink;
 }
 .errorArea {
-    border: 1px solid tomato;
+    display: flex;
+    border: 1px solid rgba(255, 99, 71, 0.295);
     padding: 5px;
     border-radius: 10px;
-    background-color: tomato;
+    background-color: rgba(255, 99, 71, 0.651);
     color: black;
 }

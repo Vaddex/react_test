@@ -18,9 +18,9 @@ const FeedbackSchema = Yup.object().shape({
 });
 
 const initialValues = {
-    username: 'hello',
-    email: 'hello@gmail.com',
-    message: 'sho ti golova',
+    username: '',
+    email: '',
+    message: '',
     level: 'varenik',
 };
 
@@ -32,7 +32,7 @@ const FeedbackForm = () => {
 
     const handleSubmit = (values, actions) => {
         console.log(values);
-        actions.resetForm();
+        actions.resetForm('');
     };
 
     return (
@@ -49,6 +49,7 @@ const FeedbackForm = () => {
                         type="text"
                         name="username"
                         id={nameFieldId}
+                        placeholder="name"
                     />
                     <ErrorMessage
                         name="username"
@@ -66,6 +67,7 @@ const FeedbackForm = () => {
                         type="email"
                         name="email"
                         id={emailFieldId}
+                        placeholder="sample_mail@mail.com"
                     />
                     <ErrorMessage
                         name="email"
@@ -83,8 +85,9 @@ const FeedbackForm = () => {
                         as="textarea"
                         name="message"
                         cols="60"
-                        rows="1"
+                        rows="4"
                         id={msgFieldId}
+                        placeholder="Input your messege"
                     />
                     <ErrorMessage
                         name="message"
