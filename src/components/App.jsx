@@ -1,16 +1,46 @@
 import { Product } from './Product';
 import { Alert } from './Alert';
 import { useState } from 'react';
+// import axios from 'axios';
+import { Audio } from 'react-loader-spinner';
+
+// components
 import TestButton from './TestButton/TestButton';
 import TestReader from './TestReader/TestReader';
-import articles from '../reader.json';
 import SearchBar from './SearchBar/SearchBar';
 import LangSwitcher from './LangSwitcher/LangSwitcher';
 import LoginForm from './LoginForm/LoginForm';
 import FeedbackForm from './FeedbackForm/FeedbackForm';
+import ArticleList from './ArticleList/ArticleList';
+import { fetchArticlesWithTopic } from '../articles-api';
+import { SearchForm } from './SearchForm/SearchForm';
+import Loader from './Loader/Loader';
+import Error from './Error/Error.jsx';
 // import Timer from './Timer/Timer';
 
+// JSON datd
+import articles from '../reader.json';
+
 export default function App() {
+    // state
+    const [dataArcicles, setArticles] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
+    const handleSearch = async topic => {
+        try {
+            setLoading(true);
+            setError(false);
+            setArticles([]);
+            const data = await fetchArticlesWithTopic(topic);
+            setArticles(data);
+        } catch (error) {
+            setError(true);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     // LangSwitcher
     const [lang, setLang] = useState('ua');
 
@@ -28,6 +58,25 @@ export default function App() {
 
     return (
         <div>
+            <div>
+                <SearchForm onSearch={handleSearch} />
+                {loading && <Loader />}
+                {error && <Error />}
+                {dataArcicles.length > 0 && (
+                    <ArticleList items={dataArcicles} />
+                )}
+            </div>
+            <>
+                <Audio
+                    height="80"
+                    width="80"
+                    radius="9"
+                    color="green"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle
+                    wrapperClass
+                />
+            </>
             <h1>Best selling</h1>
             <>
                 <LoginForm />
